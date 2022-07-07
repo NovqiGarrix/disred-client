@@ -1,13 +1,21 @@
 {
-  "name": "@disred/client",
+  "name": "@novqigarrix/disred-client",
   "version": "1.0.0",
   "description": "A DiSred Client to connect your Node.js Application to DiSred",
   "main": "build/index.js",
+  "types": "build/index.d.ts",
   "repository": "https://github.com/NovqiGarrix/disred-client",
   "author": {
     "name": "Novqi Garrix",
-    "url": "https://github.com/NovqiGarrix"
+    "url": "https://github.com/NovqiGarrix",
+    "email": "novqigarrixdev@gmail.com"
   },
+  "keywords": [
+    "disred",
+    "client",
+    "node",
+    "nodejs"
+  ],
   "license": "MIT",
   "private": false,
   "devDependencies": {
