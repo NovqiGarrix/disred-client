@@ -26,13 +26,13 @@ export interface IDisredClient {
     keys(): Promise<Array<string>>;
 
     /** To insert or update a data. */
-    set(key: string, value: string): Promise<{ status: "OK", value: string }>;
+    set(key: string, value: string): Promise<"OK">;
 
     /** To delete one specific data. */
-    del(key: string): Promise<{ status: "OK" }>;
+    del(key: string): Promise<"OK">;
 
     /** To flush your database */
-    flush(): Promise<{ status: "OK"; }>;
+    flush(): Promise<"OK">;
 }
 
 export class DisredClient implements IDisredClient {
@@ -57,7 +57,7 @@ export class DisredClient implements IDisredClient {
     }
 
     async get(key: string): Promise<string | null> {
-        const { data } = await this.getAxios().get(`/${key}/one`);
+        const { data } = await this.getAxios().post(`/one`, { key });
         if (data.error) throw new Error(data.error);
         return data.data
     }
@@ -68,19 +68,19 @@ export class DisredClient implements IDisredClient {
         return data.data
     }
 
-    async set(key: string, value: string): Promise<{ status: "OK"; value: string; }> {
+    async set(key: string, value: string): Promise<"OK"> {
         const { data } = await this.getAxios().post(`/`, { key, value });
         if (data.error) throw new Error(data.error);
         return data.data
     }
 
-    async del(key: string): Promise<{ status: "OK"; }> {
+    async del(key: string): Promise<"OK"> {
         const { data } = await this.getAxios().delete(`/${key}`);
         if (data.error) throw new Error(data.error);
         return data.data;
     }
 
-    async flush(): Promise<{ status: "OK"; }> {
+    async flush(): Promise<"OK"> {
         const { data } = await this.getAxios().delete("/flush");
         if (data.error) throw new Error(data.error);
         return data.data
