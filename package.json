@@ -5,6 +5,11 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "repository": "https://github.com/NovqiGarrix/disred-client",
+  "scripts": {
+    "start": "node build/index.js",
+    "dev": "tsnd --respawn --transpile-only src/index.ts",
+    "build": "tsc"
+  },
   "author": {
     "name": "Novqi Garrix",
     "url": "https://github.com/NovqiGarrix",
